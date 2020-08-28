@@ -45,6 +45,12 @@ public class Leilao {
 		return Collections.unmodifiableList(lances);
 	}
 
-	
-	
+
+	public void dobraLance(Usuario usuario) {
+		Lance ultimo = null;
+		for(Lance lance : lances) {
+			if(lance.getUsuario().equals(usuario)) ultimo = lance;
+		}
+		propoe(new Lance(usuario, ultimo.getValor()*2));
+	}
 }
