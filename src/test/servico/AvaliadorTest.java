@@ -12,6 +12,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class AvaliadorTest {
 
@@ -26,6 +27,18 @@ public class AvaliadorTest {
         this.joao = new Usuario("João");
         this.jose = new Usuario("José");
         this.maria = new Usuario("Maria");
+    }
+
+    @Test()
+    public void naoDeveAvaliarLeiloesSemNenhumLanceDado() {
+        try {
+            Leilao leilao = new CriadorDeLeilao().para("Playstation 3 Novo").constroi();
+            leiloeiro.avalia(leilao);
+            Assert.fail();
+        } catch (RuntimeException e) {
+            // deu certo
+        }
+
     }
 
     @Test
